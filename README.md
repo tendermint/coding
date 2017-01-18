@@ -8,11 +8,11 @@ To write [effective go](https://golang.org/doc/effective_go.html) (a must read),
 
 We all are in a journey to master go, let's share our knowledge here.  Please add links to any articles that provided you with new insights into the language.
 
-But first, take a look at [tendermint coding standard (WIP)](Coding_standard.md)
+But first, take a look at [tendermint coding standard (WIP)](Coding_Standard.md)
 
 ### Best practices
 
-- [Naming](https://talks.golang.org/2014/names.slide#1)
+* [Naming](https://talks.golang.org/2014/names.slide#1)
 
 ### Inspiration
 
@@ -43,6 +43,25 @@ I think [TDD](http://blog.cleancoder.com/uncle-bob/2016/11/10/TDD-Doesnt-work.ht
 
 So, yeah, it's not just about churning out test code, and going for 80-90% coverage, it's about changing the way to think about code.  The first client for your codebase is your test code.  It's easy to see if it works well.  Then you can use it for your server, your cli, etc...
 
+### Go test tricks
+
+  * `go test -race .` great for finding issues with many go-routines
+  * Use test coverage tools to visualize coverage within a package
+    * `go test -covermode=count -coverprofile="$prof" .`
+    * `go tool cover -html="$prof" -o coverage.html`
+  * To see coverage over all tests and code in the whole repo, you need something like [this script](./test_cover.sh)
+  * When only one test fails, check it with `go test -run=TestName .`
+
+### Delve
+
+[dlv](https://github.com/derekparker/delve) is a pretty cool debugger that natively understands go (not like gdb), allowing breakpoints and printing out variables in a go way, even go-routine aware.
+
+If you are running OSX 10.12.x, please check out this [issue](https://github.com/derekparker/delve/issues/645) and ["fix"]((https://github.com/derekparker/delve/issues/645#issuecomment-261499939)) to get it to work.  You may need to [make a self-signed certificate](https://github.com/derekparker/delve/issues/645#issuecomment-262288691) first.
+
+  * `dlv test . -test.run=FailingTest` is a nice way to get a debugger inside a test
+  * `dlv debug ./cmd/xyz` can be used like `go run` but with all the power of a debugger
+  * I think there are integrations with Atom, Visual Studio Code, and maybe other IDEs
+
 ## Production Code
 
 Going from nice, tested code on your laptop, to running in production (unsupervised code on some cloud server somewhere, facing high load, attacks, and "user errors") is far more than writing a nice deploy script.
@@ -58,6 +77,13 @@ Some issues that need considering (should become their own pages):
 
 ## Performance
 
+This is a big to-do.  Right now, just some points to think about. Before doing any performance tuning, it is best to get some numbers of the existing system, and then do profiling to get a good idea where the slow spots are, and work on tuning those.  You can compare before and after numbers to see the difference. Anything else is working with a blindfold.
+
+  * Benchmarking (get some numbers)
+  * Profiling (where are we spending our time)
+  * Algorithms (O(N) and such... what scales to billions and beyond)
+  * Optimization (tricks for better cpu/memory usage)
+  * Load Testing (benchmarking a running system)
 
 ## Architecture
 
@@ -75,5 +101,4 @@ I think this was a stroke of genius.  And since the tendermin project has starte
 
 Each component of the system also has its own architecture, some more thought out some less. I think we should make this architecture more explicit and review the basic design. Development should fit inside this basic design, or if it cannot, bring up a discussion on the design to make it better, and capable of handling this feature and oh-so-many more.
 
-Anton shared a proposal of how a group can document and extend the architecture design.
- **TODO**
+Anton shared a nice proposal of how a group can [document architecture decision](https://product.reverb.com/documenting-architecture-decisions-the-reverb-way-a3563bb24bd0#.uu7l1r1fy), maybe we can implement that in tendermint as well.
