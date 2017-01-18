@@ -16,7 +16,8 @@ But first, take a look at [tendermint coding standard (WIP)](Coding_Standard.md)
 
 ### Inspiration
 
-**TODO**
+* [Interfaces for better testing](https://nathanleclaire.com/blog/2015/10/10/interfaces-and-composition-for-effective-unit-testing-in-golang/)
+* [First class Functions](https://dave.cheney.net/2016/11/13/do-not-fear-first-class-functions)
 
 
 ## Know your tools
