@@ -8,4 +8,4 @@ As we are building a highly-available distributed system, this sort of instrumen
 
 Quick aside, if you build distributed systems or microservices in go, you should definitely look as go-kit.  You don't have to use it, but they have done a lot of work to coalesce best practices in this area. Take a look at a subdir, like [tracing](https://github.com/go-kit/kit/tree/master/tracing) to read some considerations on these topics, or look at their curated links to [other projects in this area](https://github.com/go-kit/kit#related-projects).
 
-The benefit of opentracing is that it allows one to easily swap out tracing libraries (or even put in a noop), so we can write the instrumentation code once, and allow the customers to customize the tracing in each blockchain deployment.
+The benefit of opentracing is that it allows one to easily swap out tracing libraries (or even put in a noop), so we can write the instrumentation code once, and allow the customers to customize the tracing in each blockchain deployment. Take a look at how the [recommend instrumenting large systems](http://opentracing.io/documentation/pages/instrumentation/instrumenting-large-systems.html)

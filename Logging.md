@@ -6,12 +6,14 @@ This topic has evolved from `printf`s in the code to full-fledged frameworks, an
 
 Always interesting to read [Dave Cheney's view on this point](https://dave.cheney.net/2015/11/05/lets-talk-about-logging).  TL;DR:
 
+```
   I believe that there are only two things you should log:
 
   * Things that developers care about when they are developing or debugging software.
   * Things that users care about when using your software.
 
   Obviously these are debug and info levels, respectively.
+```
 
 There is also a movement towards [structed logging](https://www.elastic.co/blog/structured-logging-filebeat), ie. storing all variables as key-value pairs for indexing, rather than using `Sprintf` style interpolation. The big advantage here is machine-readability, which allows you to feed the results into the [ELK stack](http://logz.io/learn/complete-guide-elk-stack/), [graylog](https://www.graylog.org/), [splunk](https://www.splunk.com/) or other system. To get a feel for what is possible from this, here are some examples of [visualizations directly generated from structured log files](http://blog.webkid.io/visualize-datasets-with-elk/).
 
