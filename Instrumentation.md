@@ -1,0 +1,11 @@
+# Instrumentation (aka Metrics)
+
+As soon as an app starts getting larger, and gets deployed to a production system, it becomes more important to have insight into what is happening on the running system.  One approach is [logging](Logging.md), which excels for printing debug messages as well as reporting errors.  However, it has a weakness in showing aggregate performance over multiple parts of the application.  To solve this problem, we have instrumentation (sometimes known as metrics).
+
+The idea is rather that recording individual events, one records timing information along with tags as to where it was used.  This can then be used to [make aggregate queries](https://prometheus.io/docs/visualization/grafana/) (how much total time spend processing the requests, how much total time on db queries?).  When done with deeper instrumentation, such as recording the parent(s) of any call, it can be used to [automatically generate call graphs](https://github.com/spacemonkeygo/monkit#call-graphs) and the like.  Quite powerful stuff to get insights. And there has been quite a bit of work to standarize this and make it lower overhead.
+
+As we are building a highly-available distributed system, this sort of instrumentation is critical to locate bottlenecks, and optimize the running systems.  I have researched some of the alternatives, and in the end discovered [opentracing](http://opentracing.io/), which is also used by [go-kit](https://github.com/go-kit/kit). It is based on google's tracing project, known as [dapper](https://research.google.com/pubs/pub36356.html).
+
+Quick aside, if you build distributed systems or microservices in go, you should definitely look as go-kit.  You don't have to use it, but they have done a lot of work to coalesce best practices in this area. Take a look at a subdir, like [tracing](https://github.com/go-kit/kit/tree/master/tracing) to read some considerations on these topics, or look at their curated links to [other projects in this area](https://github.com/go-kit/kit#related-projects).
+
+The benefit of opentracing is that it allows one to easily swap out tracing libraries (or even put in a noop), so we can write the instrumentation code once, and allow the customers to customize the tracing in each blockchain deployment.

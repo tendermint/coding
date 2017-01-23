@@ -69,8 +69,8 @@ Going from nice, tested code on your laptop, to running in production (unsupervi
 
 Some issues that need considering (should become their own pages):
 
-  * Logging
-  * Metrics
+  * [Logging](Logging.md)
+  * [Instrumentation](Instrumentation.md)
   * Error Reporting
   * Security
   * Robustness
