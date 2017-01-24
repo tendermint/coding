@@ -4,7 +4,7 @@ Let's collect some ideas of best practices and resources to improve our code.
 
 ## Go Coding Practices
 
-To write [effective go](https://golang.org/doc/effective_go.html) (a must read), one must think in go.  And not try to translate patterns from other languages into go. Trying to translate java's class hierachies or python's dynamism into go, only makes a indecipherable mess... But if you design from the ground up using "idiomatic" go idioms, the code becomes more maintainable, extensible, and performant.
+To write [effective go](https://golang.org/doc/effective_go.html) (a must read), one must think in go.  And not try to translate patterns from other languages into go. Trying to translate java's class hierarchies or python's dynamism into go, only makes a indecipherable mess... But if you design from the ground up using "idiomatic" go idioms, the code becomes more maintainable, extensible, and performant.
 
 We all are in a journey to master go, let's share our knowledge here.  Please add links to any articles that provided you with new insights into the language.
 
@@ -22,7 +22,7 @@ But first, take a look at [tendermint coding standard (WIP)](Coding_Standard.md)
 
 ## Know your tools
 
-Everyone has a prefered editor, IDE, whatever.  No need to fight about which is best, but we can share some tricks we learned about our favorite editor to help others that use the same one.
+Everyone has a preferred editor, IDE, whatever.  No need to fight about which is best, but we can share some tricks we learned about our favorite editor to help others that use the same one.
 
 **TODO - ALL**: add links to the editor you use
 
@@ -90,7 +90,7 @@ This is a big to-do.  Right now, just some points to think about. Before doing a
 
 Last, but definitely not least, is the architecture.  You can have the best tested, instruments, and stable code, but if the fundamental design of the system (aka architecture) was poorly thought out, it will not be able to go far.
 
-This is very much an art, and considers how data flws through the system, how to divide responsibilities, which layers can be abstracted and which are intrinsic to the system, etc.  I mean the high-level architecture of the entire tendermint project is basically:
+This is very much an art, and considers how data flows through the system, how to divide responsibilities, which layers can be abstracted and which are intrinsic to the system, etc.  I mean the high-level architecture of the entire tendermint project is basically:
 
   * A blockchain is simply consensus on a unique global ordering of events.
   * This consensus can efficiently be implemented using BFT and PoS
@@ -98,7 +98,7 @@ This is very much an art, and considers how data flws through the system, how to
   * The block-chain specific code, the interpretation of the individual events, can be implemented by a 3rd party app without touching the consensus engine core
   * Use an efficient, language-agnostic layer to implement this (ABCI)
 
-I think this was a stroke of genius.  And since the tendermin project has started, this basic architecture decision has only been reinforced.
+I think this was a stroke of genius.  And since the tendermint project has started, this basic architecture decision has only been reinforced.
 
 Each component of the system also has its own architecture, some more thought out some less. I think we should make this architecture more explicit and review the basic design. Development should fit inside this basic design, or if it cannot, bring up a discussion on the design to make it better, and capable of handling this feature and oh-so-many more.
 
