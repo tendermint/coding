@@ -20,6 +20,7 @@ Really - please add items here, or modify them if you don't like them.  We have 
   * [gometalinter (all other linters)](https://github.com/alecthomas/gometalinter) *optional*
     * Anton, can you please add a sample configuration for gometalinter that we could use?  Maybe we add this to tendermint repo if we want to agree on some stylistic conventions
 
-## Terms
+## Various
 
-  * Reserve Save/Load for long-running persistence operations.  When parsing bytes, use Read or Write.
+  * Reserve "Save" and "Load" for long-running persistence operations.  When parsing bytes, use "Read" or "Write".
+  * Avoid single variable names, be more descriptive, and try to maintain consistency across the codebase.
