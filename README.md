@@ -26,7 +26,8 @@ Everyone has a preferred editor, IDE, whatever.  No need to fight about which is
 
 **TODO - ALL**: add links to the editor you use
 
-  * [Sublime](editors/Sublime.md)
+  * [Sublime](editors/Sublime.md)  
+  * [Vim/Neovim](editors/vim.md)
 
 There is also a quite powerful ecosystem of command line tooling for go programming.  Here are some to check out:
 
