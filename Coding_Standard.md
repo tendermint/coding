@@ -19,6 +19,7 @@ Really - please add items here, or modify them if you don't like them.  We have 
   * [lint](https://github.com/golang/lint) *required*
   * [gometalinter (all other linters)](https://github.com/alecthomas/gometalinter) *optional*
     * Anton, can you please add a sample configuration for gometalinter that we could use?  Maybe we add this to tendermint repo if we want to agree on some stylistic conventions
+  * [shellcheck](https://github.com/koalaman/shellcheck) *required*
 
 ## Various
 
