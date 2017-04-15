@@ -25,3 +25,39 @@ Really - please add items here, or modify them if you don't like them.  We have 
 
   * Reserve "Save" and "Load" for long-running persistence operations.  When parsing bytes, use "Read" or "Write".
   * Avoid single variable names, be more descriptive, and try to maintain consistency across the codebase.
+  * Do not use "instance" in function names
+
+## Importing Libraries
+Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
+  * UP FOR DISCUSSION: Do not label libraries with their default name (aka: wire "github.com/tendermint/go-wire") 
+  * Here are some common library labels for consistency: 
+    * dbm "github.com/tendermint/go-db"
+    * cmn "github.com/tendermint/go-common"
+    * tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
+    * tmcfg "github.com/tendermint/tendermint/config/tendermint"
+    * tmtypes "github.com/tendermint/tendermint/types"
+  * Avoid using the `.` library import or `go-common`. The `.` import is replaced throughout tendermint libraries
+  * tip: Use the `_` library import to import a library for initialization effects (side effects) 
+
+## Testing
+  * Add Tests! 
+  * Make use of table driven testing where possible and not-cumbersome
+    * [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
+  * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
+
+## Errors 
+
+  * Make use of [pkg/errors](https://github.com/pkg/errors) for stack tracing if you have set a `--debug` option in your application
+  * UP FOR DISCUSSION: To maximize code portability wherever possible check errors in place and return them, aka. do not hand off to another function for checking and exiting (for example `ExitOnErr(err error)`
+
+## Config
+  
+  * Currently the TOML filetype is being used for config files
+  * A good practice is to store the default Config file under `~/.[yourAppName]/config.toml`
+  * Implement your config setup with [Viper](https://github.com/spf13/viper)
+
+## CLI
+
+  * When implementing a CLI use [Cobra](https://github.com/spf13/cobra)
+  * Wherever possible return errors instread of exiting the application. This allows for the application optionally print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
+  * By default to not print a full error stack trace for applications, but only print an error
