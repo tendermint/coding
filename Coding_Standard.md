@@ -14,14 +14,14 @@ Really - please add items here, or modify them if you don't like them.  We have 
 
  * [lint](https://github.com/golang/lint) *required*
  * [gometalinter (all other linters)](https://github.com/alecthomas/gometalinter) *optional*
-  - Anton, can you please add a sample configuration for gometalinter that we could use?  Maybe we add this to tendermint repo if we want to agree on some stylistic conventions
+   - Anton, can you please add a sample configuration for gometalinter that we could use?  Maybe we add this to tendermint repo if we want to agree on some stylistic conventions
  * [shellcheck](https://github.com/koalaman/shellcheck) *required*
 
 ## Various
 
  * Reserve "Save" and "Load" for long-running persistence operations.  When parsing bytes, use "Read" or "Write".
  * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase.
-  - JAE: This conflicts with https://talks.golang.org/2014/names.slide#7
+   - JAE: This conflicts with https://talks.golang.org/2014/names.slide#7
  * Do not use "instance" in function names
  * In comments, use "iff" to mean, "if and only if".  (It's not a typo)
 
@@ -30,11 +30,11 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
  * UP FOR DISCUSSION: Do not label libraries with their default name (aka: wire "github.com/tendermint/go-wire") 
  * Here are some common library labels for consistency: 
-  - dbm "github.com/tendermint/go-db"
-  - cmn "github.com/tendermint/go-common"
-  - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
-  - tmcfg "github.com/tendermint/tendermint/config/tendermint"
-  - tmtypes "github.com/tendermint/tendermint/types"
+   - dbm "github.com/tendermint/go-db"
+   - cmn "github.com/tendermint/go-common"
+   - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
+   - tmcfg "github.com/tendermint/tendermint/config/tendermint"
+   - tmtypes "github.com/tendermint/tendermint/types"
  * Avoid using the `.` library import or `go-common`. The `.` import is replaced throughout tendermint libraries
  * tip: Use the `_` library import to import a library for initialization effects (side effects) 
 
@@ -42,7 +42,7 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
  * Add Tests! 
  * Make use of table driven testing where possible and not-cumbersome
-  - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
+   - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
  * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
 
 ## Errors 
@@ -65,6 +65,6 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 ## Questions
 
  * For indentation, all non-go code (`*.proto`, `Makefile`, `*.sh`) should use:
-  - 4 spaces
-  - 1 tab
-  - something else??
+   - 4 spaces
+   - 1 tab
+   - something else??
