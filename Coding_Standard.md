@@ -24,8 +24,9 @@ Really - please add items here, or modify them if you don't like them.  We have 
 ## Various
 
   * Reserve "Save" and "Load" for long-running persistence operations.  When parsing bytes, use "Read" or "Write".
-  * Avoid single variable names, be more descriptive, and try to maintain consistency across the codebase.
-  * Do not use "instance" in function names
+  * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase. JAE: Does this conflict with Andrew Gerrand's slideshow, 'Prefer i to index' ?
+  * Do not use "instance" in function names
+  * In comments, use "iff" to mean, "if and only if".  (It's not a typo)
 
 ## Importing Libraries
 Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
