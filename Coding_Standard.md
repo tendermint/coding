@@ -24,9 +24,9 @@ Really - please add items here, or modify them if you don't like them.  We have 
    - JAE: This conflicts with https://talks.golang.org/2014/names.slide#7
  * Do not use "instance" in function names
  * In comments, use "iff" to mean, "if and only if".  (It's not a typo)
- * Product names are capitalized, like Tendermint, Basecoin, etc except in command lines: `tendermint --help`
+ * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
  * The first letter of sentences in comments are capitalized
- * Acronyms are all capitalized, like "RPC".  "MyID", rather than "MyId"
+ * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId"
 
 ## Importing Libraries
 Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
