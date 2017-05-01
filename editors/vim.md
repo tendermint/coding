@@ -18,7 +18,7 @@ let g:go_fmt_command = "goimports"
 let g:go_auto_type_info = 1
 ```
 
-With this Vim will show you type info (including function signatures) for the word under cursor.
+With `go_auto_type_info` turned on Vim will show you type info (including function signatures) for the word under cursor.
 
 There are a lot of things, not related to Golang, one can find [here](https://github.com/melekes/dotfiles/blob/master/config/nvim/init.vim).
 
