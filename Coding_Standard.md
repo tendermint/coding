@@ -32,13 +32,14 @@ Really - please add items here, or modify them if you don't like them.  We have 
 Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
 
  * UP FOR DISCUSSION: Do not label libraries with their default name (aka: wire "github.com/tendermint/go-wire") 
+ * Separate imports into blocks - one for the standard lib and one for others. In some cases, it's nice to separate into three: standard lib, external libs, tendermint libs.
  * Here are some common library labels for consistency: 
-   - dbm "github.com/tendermint/go-db"
-   - cmn "github.com/tendermint/go-common"
+   - dbm "github.com/tendermint/tmlibs/db"
+   - cmn "github.com/tendermint/tmlibs/common"
    - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
    - tmcfg "github.com/tendermint/tendermint/config/tendermint"
    - tmtypes "github.com/tendermint/tendermint/types"
- * Avoid using the `.` library import or `go-common`. The `.` import is replaced throughout tendermint libraries
+ * Avoid using the `.` library import for `tmlibs/common` or anything else. The `.` import is being replaced throughout tendermint libraries
  * tip: Use the `_` library import to import a library for initialization effects (side effects) 
 
 ## Testing
