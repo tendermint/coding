@@ -66,6 +66,11 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
  * Wherever possible return errors instread of exiting the application. This allows for the application optionally print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
  * By default to not print a full error stack trace for applications, but only print an error
 
+## Version
+
+ * Every repo should have a version/version.go file that mimicks the tendermint core repo
+ * We read the value of the constant version in our build scripts and hence it has to be a string
+
 ## Questions
 
  * For indentation, all non-go code (`*.proto`, `Makefile`, `*.sh`) should use:
