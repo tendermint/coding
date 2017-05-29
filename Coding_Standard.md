@@ -54,7 +54,7 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
      - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
    * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
  * For Bash testing: 
-   * Checkout [BATS](https://github.com/sstephenson/bats)
+   * Checkout [shunit2](https://github.com/kward/shunit2) and [bats](https://github.com/sstephenson/bats)
 
 ## Errors 
 
