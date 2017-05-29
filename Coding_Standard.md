@@ -44,10 +44,17 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
 ## Testing
 
- * Add Tests! 
- * Make use of table driven testing where possible and not-cumbersome
-   - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
- * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
+ * The first rule of testing is: we add tests to our code
+ * The second rule of testing is: we add tests to our code
+ * Make use of the golang test suite, but also make use of bash script testing
+   - Bash script testing can be useful for testing the overall performance through a CLI
+   - Golang testing is preferable for testing functionality of packages and libraries
+ * For Golang testing:
+   * Make use of table driven testing where possible and not-cumbersome
+     - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
+   * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
+ * For Bash testing: 
+   * Checkout [BATS](https://github.com/sstephenson/bats)
 
 ## Errors 
 
