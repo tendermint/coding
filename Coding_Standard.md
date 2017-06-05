@@ -10,6 +10,13 @@ Really - please add items here, or modify them if you don't like them.  We have 
  2. Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
  3. Think about documentation, and try to leave godoc comments, when it will help new developers. What do you think of the current documentation for [go-merkle](https://godoc.org/github.com/tendermint/go-merkle), [abci](https://godoc.org/github.com/tendermint/abci), and [tendermint](https://godoc.org/github.com/tendermint/tendermint)?
 
+## Git
+
+ * On Tendermint production repos never push to `master` or `develop` branches
+ * New features should be written in new branches and pull request opened to the `develop` branch
+ * Once in a while Bucky will push from `develop` to `master` during releases
+ * All branches should be in lowercase, underscores are okay in branch names
+
 ## Linters
 
  * [lint](https://github.com/golang/lint) *required*
