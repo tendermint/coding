@@ -1,5 +1,9 @@
 # Vim/NeoVim
 
+Inspirational vimrc
+- [Antons](https://github.com/melekes/dotfiles/tree/master/config/nvim)
+- [Rigel](https://github.com/rigelrozanski/quickstart-vim-go)
+
 Plugins:
 
 - [vim-go](https://github.com/fatih/vim-go)
@@ -25,3 +29,5 @@ There are a lot of things, not related to Golang, one can find [here](https://gi
 Tutorials:
 
 - [vim-go tutorial](https://github.com/fatih/vim-go-tutorial)
+
+
