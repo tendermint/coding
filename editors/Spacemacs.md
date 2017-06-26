@@ -3,6 +3,9 @@
 
 Basic rule: Don't change the default configuration too much. It is an amazing default.
 
+## go-lang Installation
+Use the [Go Version Manager](https://github.com/moovweb/gvm).
+
 ## Emacs Installation
 ### macOS
 ```bash
@@ -23,7 +26,8 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ### go-lang
 Open emacs and press `SPC-f-e-d` to open the equivalent of `./bashrc`.
 
-Add `go` to `dotspacemacs-configuration-layers`.
+Add `go` to `dotspacemacs-configuration-layers` and follow these [instructions](http://spacemacs.org/layers/+lang/go/README.html).
+
 ```bash
 dotspacemacs-configuration-layers
    '(
