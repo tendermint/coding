@@ -2,7 +2,7 @@
 
 In order to keep our code looking good with lots of programmers working on it, it helps to have a "coding standard", so all the code generally looks quite similar. This doesn't mean there is only one "right way" to write code, or even that this standard is better than your style.  But if we agree to a number of stylistic practices, it makes it much easier to read and modify new code.
 
-**Current state**: Very rough first proposal - try it out, give feedback, and *please* modify it
+**Current state**: First proposal - try it out, give feedback, and *please* modify it
 
 Really - please add items here, or modify them if you don't like them.  We have git versioning, don't be afraid of change.
 
@@ -16,6 +16,8 @@ Really - please add items here, or modify them if you don't like them.  We have 
  * New features should be written in new branches and pull request opened to the `develop` branch
  * Once in a while Bucky will push from `develop` to `master` during releases
  * All branches should be in lowercase, underscores are okay in branch names
+ * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes 
+ can be included under a an `unreleased changes` header at the top of the document
 
 ## Linters
 
@@ -39,8 +41,9 @@ Really - please add items here, or modify them if you don't like them.  We have 
 ## Importing Libraries
 Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
 
- * UP FOR DISCUSSION: Do not label libraries with their default name (aka: wire "github.com/tendermint/go-wire") 
- * Separate imports into blocks - one for the standard lib and one for others. In some cases, it's nice to separate into three: standard lib, external libs, tendermint libs.
+ * Use [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
+ * Separate imports into blocks - one for the standard lib and one for others. In some cases, it's nice to 
+ separate into three: standard lib, external libs, tendermint libs.
  * Here are some common library labels for consistency: 
    - dbm "github.com/tendermint/tmlibs/db"
    - cmn "github.com/tendermint/tmlibs/common"
@@ -49,6 +52,13 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
    - tmtypes "github.com/tendermint/tendermint/types"
  * Avoid using the `.` library import for `tmlibs/common` or anything else. The `.` import is being replaced throughout tendermint libraries
  * tip: Use the `_` library import to import a library for initialization effects (side effects) 
+
+## Dependencies
+
+ * Use [glide](https://github.com/Masterminds/glide) 
+ * Never edit the glide.lock file, instead if you need to lock a dependancy to a certain git hash, the `version` can
+ be set to the desired hash. For more information on advanced usage of the `glide.yaml` file see 
+[this](https://glide.readthedocs.io/en/latest/glide.yaml/)
 
 ## Testing
 
@@ -77,18 +87,34 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
 ## CLI
 
- * When implementing a CLI use [Cobra](https://github.com/spf13/cobra)
- * Wherever possible return errors instread of exiting the application. This allows for the application optionally print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
+ * When implementing a CLI use [Cobra](https://github.com/spf13/cobra) and [Viper](https://github.com/spf13/viper)
+ * Wherever possible return errors instread of exiting the application. This allows for the application optionally 
+ print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
  * By default to not print a full error stack trace for applications, but only print an error
+ * Instead of using pointer flags (eg. `FlagSet().StringVar`) use viper to retrieve flag values (eg. `viper.GetString`)
+   - The flag key used when setting and getting the flag should always be stored in a 
+   variable taking the form `FlagXxx` or `flagXxx`.
+   - Flag short variable descriptions should always start with a lower case charater as to remain consistent with 
+   the description provided in the default `--help` flag.
 
 ## Version
 
  * Every repo should have a version/version.go file that mimicks the tendermint core repo
  * We read the value of the constant version in our build scripts and hence it has to be a string
 
-## Questions
+## Non-Golang Code
 
  * For indentation, all non-go code (`*.proto`, `Makefile`, `*.sh`) should use:
-   - 4 spaces
-   - 1 tab
-   - something else??
+   - 4 spaces per tab
+   - _vim-tip_ Add to .vimrc file:
+```
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+" for auto-intendentation on save:
+autocmd BufWritePre *.sh exec "normal gg=G``zz"
+```
+   
