@@ -28,11 +28,15 @@ Everyone has a preferred editor, IDE, whatever.  No need to fight about which is
 
   * [Sublime](editors/Sublime.md)  
   * [Vim/Neovim](editors/vim.md)
+  * [VSCode](editors/vscode.md)
+  * [Gogland](editors/gogland.md)
 
 There is also a quite powerful ecosystem of command line tooling for go programming.  Here are some to check out:
 
   * [std tools](https://godoc.org/cmd) - especially `go vet` and `go doc`
-  * [X tools](https://godoc.org/golang.org/x/tools/cmd) - especially `goimports`, `gorename`, `
+  * [X tools](https://godoc.org/golang.org/x/tools/cmd) - especially `goimports`, `gorename`
+  * [gor](https://github.com/mitchellh/gor)
+  * [ghr](https://github.com/tcnksm/ghr)
   * [golint](https://github.com/golang/lint)
   * Your ideas here...
 
