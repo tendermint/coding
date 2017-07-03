@@ -35,8 +35,8 @@ There is also a quite powerful ecosystem of command line tooling for go programm
 
   * [std tools](https://godoc.org/cmd) - especially `go vet` and `go doc`
   * [X tools](https://godoc.org/golang.org/x/tools/cmd) - especially `goimports`, `gorename`
-  * [gor](https://github.com/mitchellh/gor)
-  * [ghr](https://github.com/tcnksm/ghr)
+  * [gox](https://github.com/mitchellh/gox)
+  * [ghr](https://github.com/tcnksm/ghr) - upload cross-compiled binaries as github release
   * [golint](https://github.com/golang/lint)
   * Your ideas here...
 
