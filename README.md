@@ -2,6 +2,12 @@
 
 Let's collect some ideas of best practices and resources to improve our code.
 
+#### Beginner Tips
+[Kid tips](coding/kid_tips.md)
+is a fun little document that to help folks who may be unfamiliar with certain
+concepts taken for granted by experienced team members. Many of the tips in
+this document will become second nature in no time ;)
+
 ## Go Coding Practices
 
 To write [effective go](https://golang.org/doc/effective_go.html) (a must read), one must think in go.  And not try to translate patterns from other languages into go. Trying to translate java's class hierarchies or python's dynamism into go, only makes a indecipherable mess... But if you design from the ground up using "idiomatic" go idioms, the code becomes more maintainable, extensible, and performant.
