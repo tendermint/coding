@@ -33,6 +33,12 @@ Really - please add items here, or modify them if you don't like them.  We have 
  * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase.
    - JAE: This conflicts with https://talks.golang.org/2014/names.slide#7
  * Do not use "instance" in function names
+ * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur: 
+``` golang
+type middleware struct { 
+middleware Middleware 
+}
+```
  * In comments, use "iff" to mean, "if and only if".  (It's not a typo)
  * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
  * The first letter of sentences in comments are capitalized
