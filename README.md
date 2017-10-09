@@ -6,6 +6,7 @@ Most production repositories should have:
 - version bump when merge to master
 - PR/ISSUE/CONTRIBUTING files/templates
 - a CODEOWNERS file (in `.github`) showing who gets to do what
+- a LICENSE file and adherence to that license in the source code (e.g., file headers)
 
 Support, or "minor" repos have more flexibility in the process. Have a gander to see how they each operate.
 
