@@ -14,7 +14,7 @@ To write [effective go](https://golang.org/doc/effective_go.html) (a must read),
 
 We all are in a journey to master go, let's share our knowledge here.  Please add links to any articles that provided you with new insights into the language.
 
-But first, take a look at [tendermint coding standard (WIP)](Coding_Standard.md)
+But first, take a look at the [Tendermint Coding Standard](coding_standard.md)
 
 ### Best practices
 
