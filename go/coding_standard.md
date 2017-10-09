@@ -1,37 +1,34 @@
-# Tendermint Coding Standard (WIP)
+# Tendermint Coding Standard
 
 In order to keep our code looking good with lots of programmers working on it, it helps to have a "coding standard", so all the code generally looks quite similar. This doesn't mean there is only one "right way" to write code, or even that this standard is better than your style.  But if we agree to a number of stylistic practices, it makes it much easier to read and modify new code.
 
-**Current state**: First proposal - try it out, give feedback, and *please* modify it
-
-Really - please add items here, or modify them if you don't like them.  We have git versioning, don't be afraid of change.
+Please add items here, or modify them as appropriate. We have git versioning, don't be afraid of change.
 
  1. Use `gofmt` (or `goimport`) to format all code upon saving it
  2. Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
- 3. Think about documentation, and try to leave godoc comments, when it will help new developers. What do you think of the current documentation for [go-merkle](https://godoc.org/github.com/tendermint/go-merkle), [abci](https://godoc.org/github.com/tendermint/abci), and [tendermint](https://godoc.org/github.com/tendermint/tendermint)?
+ 3. Think about documentation, and try to leave godoc comments, when it will help new developers.
 
 ## Git
 
- * On Tendermint production repos never push to `master` or `develop` branches
+ * Production repos never push to `master` or `develop` branches
  * New features should be written in new branches and pull request opened to the `develop` branch
  * Once in a while Bucky will push from `develop` to `master` during releases
  * All branches should be in lowercase, underscores are okay in branch names
  * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes 
- can be included under a an `unreleased changes` header at the top of the document
+ can be included under an `unreleased changes` header at the top of the document.
 
 ## Linters
 
- * [lint](https://github.com/golang/lint) *required*
- * [gometalinter (all other linters)](https://github.com/alecthomas/gometalinter) *optional*
-   - Anton, can you please add a sample configuration for gometalinter that we could use?  Maybe we add this to tendermint repo if we want to agree on some stylistic conventions
-   - To suppress linting place the `//nolint` above a package, function, group, etc.
+These must be applied to all (go) repos.
+
  * [shellcheck](https://github.com/koalaman/shellcheck) *required*
+ * [gometalinter (covers all important linters)](https://github.com/alecthomas/gometalinter)
+   - see the `Makefile` in each repo for ongoing linting progress. Running `make metalinter` is the ultimate goal, while `make metalinter_test` enables all the linters that are currently passing, for integration with CI.
 
 ## Various
 
- * Reserve "Save" and "Load" for long-running persistence operations.  When parsing bytes, use "Read" or "Write".
- * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase.
-   - JAE: This conflicts with https://talks.golang.org/2014/names.slide#7
+ * Reserve "Save" and "Load" for long-running persistence operations. When parsing bytes, use "Read" or "Write".
+ * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase. Note: this conflicts with https://talks.golang.org/2014/names.slide#7
  * Do not use "instance" in function names
  * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur: 
 ``` golang
@@ -56,7 +53,7 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
    - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
    - tmcfg "github.com/tendermint/tendermint/config/tendermint"
    - tmtypes "github.com/tendermint/tendermint/types"
- * Avoid using the `.` library import for `tmlibs/common` or anything else. The `.` import is being replaced throughout tendermint libraries
+ * Avoid using anonymous imports (the `.`), for example, `tmlibs/common` or anything else.
  * tip: Use the `_` library import to import a library for initialization effects (side effects) 
 
 ## Dependencies
