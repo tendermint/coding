@@ -7,6 +7,7 @@ Please add items here, or modify them as appropriate. We have git versioning, do
  1. Use `gofmt` (or `goimport`) to format all code upon saving it
  2. Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
  3. Think about documentation, and try to leave godoc comments, when it will help new developers.
+ 4. Avoid the use of `TODO` / `BUG` / `FIXME` / `XXX` in code; these should instead be documented as specific issues that can be linked to in the code.
 
 ## Git
 
@@ -21,7 +22,7 @@ Please add items here, or modify them as appropriate. We have git versioning, do
 
 These must be applied to all (go) repos.
 
- * [shellcheck](https://github.com/koalaman/shellcheck) *required*
+ * [shellcheck](https://github.com/koalaman/shellcheck)
  * [gometalinter (covers all important linters)](https://github.com/alecthomas/gometalinter)
    - see the `Makefile` in each repo for ongoing linting progress. Running `make metalinter` is the ultimate goal, while `make metalinter_test` enables all the linters that are currently passing, for integration with CI.
 
@@ -46,6 +47,7 @@ type middleware struct {
  * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId"
 
 ## Importing Libraries
+
 Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
 
  * Use [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)

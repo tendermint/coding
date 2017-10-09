@@ -72,5 +72,4 @@ $ git checkout pr/999
 Branch pr/999 set up to track remote branch pr/999 from origin.
 
 Switched to a new branch 'pr/999'
-
 ```
