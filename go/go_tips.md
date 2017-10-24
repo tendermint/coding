@@ -19,6 +19,7 @@ But first, take a look at the [Tendermint Coding Standard](coding_standard.md)
 ### Best practices
 
 * [Naming](https://talks.golang.org/2014/names.slide#1)
+* [Pointers vs. Values](https://golang.org/doc/faq#methods_on_values_or_pointers)
 
 ### Inspiration
 
