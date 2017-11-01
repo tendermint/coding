@@ -45,6 +45,7 @@ type middleware struct {
  * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
  * The first letter of sentences in comments are capitalized
  * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId"
+ * Receiver variables should be at least 2 letters.  e.g. not `func (s \*Something) MyFunc(){}` but `func (sm *Something) MyFunc(){}`.  This makes refactoring easier when we rename Something to something else.
 
 ## Importing Libraries
 
