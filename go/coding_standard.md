@@ -15,7 +15,7 @@ Please add items here, or modify them as appropriate. We have git versioning, do
  * New features should be written in new branches and pull request opened to the `develop` branch
  * Merging from `develop` to `master` happens during a release.
  * All branches should be in lowercase, underscores are okay in branch names
- * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes 
+ * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes
  can be included under an `unreleased changes` header at the top of the document.
 
 ## Linters
@@ -35,9 +35,9 @@ Every package should have a high level `doc.go` file to describe the purpose of 
  * Reserve "Save" and "Load" for long-running persistence operations. When parsing bytes, use "Read" or "Write".
  * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase. Note: this conflicts with https://talks.golang.org/2014/names.slide#7
  * Do not use "instance" in function names
- * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur: 
+ * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur:
 ``` golang
-type middleware struct { 
+type middleware struct {
 	middleware Middleware
 }
 ```
@@ -49,25 +49,25 @@ type middleware struct {
 
 ## Importing Libraries
 
-Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity. 
+Sometimes it's necessary to rename libraries to avoid naming collisions or ambiguity.
 
  * Use [goimports](https://godoc.org/golang.org/x/tools/cmd/goimports)
- * Separate imports into blocks - one for the standard lib and one for others. In some cases, it's nice to 
+ * Separate imports into blocks - one for the standard lib and one for others. In some cases, it's nice to
  separate into three: standard lib, external libs, tendermint libs.
- * Here are some common library labels for consistency: 
+ * Here are some common library labels for consistency:
    - dbm "github.com/tendermint/tmlibs/db"
    - cmn "github.com/tendermint/tmlibs/common"
    - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
    - tmcfg "github.com/tendermint/tendermint/config/tendermint"
    - tmtypes "github.com/tendermint/tendermint/types"
  * Avoid using anonymous imports (the `.`), for example, `tmlibs/common` or anything else.
- * tip: Use the `_` library import to import a library for initialization effects (side effects) 
+ * tip: Use the `_` library import to import a library for initialization effects (side effects)
 
 ## Dependencies
 
- * Use [glide](https://github.com/Masterminds/glide) 
+ * Use [glide](https://github.com/Masterminds/glide)
  * Never edit the glide.lock file, instead if you need to lock a dependancy to a certain git hash, the `version` can
- be set to the desired hash. For more information on advanced usage of the `glide.yaml` file see 
+ be set to the desired hash. For more information on advanced usage of the `glide.yaml` file see
 [this](https://glide.readthedocs.io/en/latest/glide.yaml/).
  * Dependencies should be pinned by a release tag, or specific commit, to avoid breaking `go get` when external dependencies are updated.
 
@@ -82,16 +82,16 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
    * Make use of table driven testing where possible and not-cumbersome
      - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
    * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
- * For Bash testing: 
+ * For Bash testing:
    * Checkout [shunit2](https://github.com/kward/shunit2) and [bats](https://github.com/sstephenson/bats)
 
-## Errors 
+## Errors
 
  * Make use of [pkg/errors](https://github.com/pkg/errors) for stack tracing if you have set a `--debug` option in your application
  * UP FOR DISCUSSION: To maximize code portability wherever possible check errors in place and return them, aka. do not hand off to another function for checking and exiting (for example `ExitOnErr(err error)`
 
 ## Config
-  
+
  * Currently the TOML filetype is being used for config files
  * A good practice is to store the default Config file under `~/.[yourAppName]/config.toml`
  * Implement your config setup with [Viper](https://github.com/spf13/viper)
@@ -99,13 +99,13 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 ## CLI
 
  * When implementing a CLI use [Cobra](https://github.com/spf13/cobra) and [Viper](https://github.com/spf13/viper). urfave/cli can be replace with cobra in those repos where applicable.
- * Wherever possible return errors instread of exiting the application. This allows for the application optionally 
+ * Wherever possible return errors instread of exiting the application. This allows for the application optionally
  print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
  * By default to not print a full error stack trace for applications, but only print an error
  * Instead of using pointer flags (eg. `FlagSet().StringVar`) use viper to retrieve flag values (eg. `viper.GetString`)
-   - The flag key used when setting and getting the flag should always be stored in a 
+   - The flag key used when setting and getting the flag should always be stored in a
    variable taking the form `FlagXxx` or `flagXxx`.
-   - Flag short variable descriptions should always start with a lower case charater as to remain consistent with 
+   - Flag short variable descriptions should always start with a lower case charater as to remain consistent with
    the description provided in the default `--help` flag.
 
 ## Version
@@ -115,16 +115,32 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
 ## Non-Golang Code
 
- * For indentation, all non-go code (`*.proto`, `Makefile`, `*.sh`) should use:
-   - 4 spaces per tab
-   - _vim-tip_ Add to .vimrc file:
-```
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-" for auto-intendentation on save:
-autocmd BufWritePre *.sh exec "normal gg=G``zz"
-```
+ * All non-go code (`*.proto`, `Makefile`, `*.sh`), where there is no common
+   agreement on style, should be formatted according to
+   [EditorConfig](http://editorconfig.org/) config:
+
+   ```
+   # top-most EditorConfig file
+   root = true
+
+   # Unix-style newlines with a newline ending every file
+   [*]
+   charset = utf-8
+   end_of_line = lf
+   insert_final_newline = true
+   trim_trailing_whitespace = true
+
+   [Makefile]
+   indent_style = tab
+
+   [*.sh]
+   indent_style = tab
+
+   [*.proto]
+   indent_style = space
+   indent_size = 2
+   ```
+
+   Make sure the file above (`.editorconfig`) are in the root directory of your
+   repo and you have a [plugin for your
+   editor](http://editorconfig.org/#download) installed.
