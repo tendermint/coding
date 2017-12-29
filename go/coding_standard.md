@@ -4,11 +4,12 @@ In order to keep our code looking good with lots of programmers working on it, i
 
 Please add items here, or modify them as appropriate. We have git versioning, don't be afraid of change.
 
- 1. Use `gofmt` (or `goimport`) to format all code upon saving it
- 2. Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
- 3. Think about documentation, and try to leave godoc comments, when it will help new developers.
- 4. Avoid the use of `TODO` / `BUG` / `FIXME` / `XXX` in code; these should instead be documented as specific issues that can be linked to in the code.
-
+ * Use `gofmt` (or `goimport`) to format all code upon saving it
+ * Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
+ * Think about documentation, and try to leave godoc comments, when it will help new developers.
+ * Avoid the use of `TODO` / `BUG` / `FIXME` / `XXX` in code; these should instead be documented as specific issues that can be linked to in the code.
+ * Avoid the use of panics and instead return an error (see [this issue](https://github.com/tendermint/coding/issues/23) for more information.
+ 
 ## Git
 
  * Production repos never push to `master` or `develop` branches
