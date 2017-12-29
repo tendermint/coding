@@ -99,9 +99,10 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 ## CLI
 
  * When implementing a CLI use [Cobra](https://github.com/spf13/cobra) and [Viper](https://github.com/spf13/viper). urfave/cli can be replace with cobra in those repos where applicable.
- * Wherever possible return errors instread of exiting the application. This allows for the application optionally
+ * Helper messages for commands and flags must be all lowercase.
+ * Wherever possible return errors instead of exiting the application. This allows for the application optionally
  print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
- * By default to not print a full error stack trace for applications, but only print an error
+ * By default, do not print a full error stack trace for applications, but only print an error
  * Instead of using pointer flags (eg. `FlagSet().StringVar`) use viper to retrieve flag values (eg. `viper.GetString`)
    - The flag key used when setting and getting the flag should always be stored in a
    variable taking the form `FlagXxx` or `flagXxx`.
