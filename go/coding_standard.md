@@ -75,15 +75,14 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
  * The first rule of testing is: we add tests to our code
  * The second rule of testing is: we add tests to our code
- * Make use of the golang test suite, but also make use of bash script testing
-   - Bash script testing can be useful for testing the overall performance through a CLI
-   - Golang testing is preferable for testing functionality of packages and libraries
  * For Golang testing:
    * Make use of table driven testing where possible and not-cumbersome
      - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
    * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
+   * Name the test `package X_test` to make ensure the code gets tested through the public API. See [this issue](https://github.com/tendermint/coding/issues/4) for background.
  * For Bash testing:
    * Checkout [shunit2](https://github.com/kward/shunit2) and [bats](https://github.com/sstephenson/bats)
+   * In general, bash testing should be kept to a minimum.
 
 ## Errors
 
