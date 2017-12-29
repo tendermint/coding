@@ -8,7 +8,7 @@ Please add items here, or modify them as appropriate. We have git versioning, do
  * Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
  * Think about documentation, and try to leave godoc comments, when it will help new developers.
  * Avoid the use of `TODO` / `BUG` / `FIXME` / `XXX` in code; these should instead be documented as specific issues that can be linked to in the code.
- * Avoid the use of panics and instead return an error (see [this issue](https://github.com/tendermint/coding/issues/23) for more information.
+ * Avoid the use of panics and instead return an error. See [this issue](https://github.com/tendermint/coding/issues/23) for more information.
  
 ## Git
 
