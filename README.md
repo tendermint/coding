@@ -13,12 +13,13 @@ Support, or "minor" repos have more flexibility in the process. Have a gander to
 ## Submitting a PR:
 
 - Branch from the tip of the active development branch (`develop` for major repos, `master` for minor repos.
-- Review the [go coding standards](go/coding_standards.md). Follow them closely.
+- Review the [go coding standards](https://github.com/tendermint/coding/blob/master/go/coding_standard.md). Follow them closely.
 - Make some (or one) commits, in logical order and with a useful commit comment.
-- Unless it's a typo or small fix, PRs should refer to a specific issue.
+- Link to all relevant issues, if any.  The PR or the first issue should contain a detailed description.
 - Await response from other users, maintainers, and/or colleagues.
 - _Assign_ a PR to a maintainer if it is uncontroversial in its changes, has few lines of code changed, or will require minimal cognitive overhead to review. These PRs should rarely require requested changed. PRs submitted with significant changes should _request a review_ from a maintainer of that repo.
 - Read the markdown files in this repo (and experiment with the scripts) for more information about coding at Tendermint.
+- Don't change code, whether broken or not, without a Github issue/PR that documents the prior behavior, reason for changes, and new behavior.  Especially document all aspects of prior behavior before changing/refactoring working code.
 
 ## Reviewing a PR:
 
@@ -28,9 +29,7 @@ Locate the section for your github remote in the `.git/config` file. It will loo
 
 ```
 [remote "origin"]
-
 	fetch = +refs/heads/*:refs/remotes/origin/*
-
 	url = git@github.com:joyent/node.git
 ```
 
@@ -38,11 +37,8 @@ Now add the line `fetch = +refs/pull/*/head:refs/remotes/origin/pr/*` to this se
 
 ```
 [remote "origin"]
-
 	fetch = +refs/heads/*:refs/remotes/origin/*
-
 	url = git@github.com:joyent/node.git
-
 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
 ```
 
@@ -50,17 +46,11 @@ Now fetch all the pull requests:
 
 ```
 $ git fetch origin
-
 From github.com:joyent/node
-
  * [new ref]         refs/pull/1000/head -> origin/pr/1000
-
  * [new ref]         refs/pull/1002/head -> origin/pr/1002
-
  * [new ref]         refs/pull/1004/head -> origin/pr/1004
-
  * [new ref]         refs/pull/1009/head -> origin/pr/1009
-
 ...
 ```
 
@@ -68,9 +58,7 @@ To check out a particular pull request:
 
 ```
 $ git checkout pr/999
-
 Branch pr/999 set up to track remote branch pr/999 from origin.
-
 Switched to a new branch 'pr/999'
 ```
 
@@ -78,11 +66,11 @@ Switched to a new branch 'pr/999'
 
 We use [Read The Docs](https://readthedocs.org/) to host - with [Sphinx](http://www.sphinx-doc.org/en/stable/) to build - our documentation. We currently have three docs streams:
 
-* [tendermint](https://tendermint.readthedocs.io)
-* [ethermint](https://ethermint.readthedocs.io)
+* [Tendermint](https://tendermint.readthedocs.io)
+* [Ethermint](https://ethermint.readthedocs.io)
 * [Cosmos-SDK](https://cosmos-sdk.readthedocs.io)
 
-each built from the `docs/` directory of their respective respositories. To build the docs locally, from the `docs/` directory, run `make html` and open `_build/html/index.html` in your browser.
+Each is built from the `docs/` directory of their respective respositories. To build the docs locally, from the `docs/` directory, run `make html` and open `_build/html/index.html` in your browser.
 
 To convert documentation in markdown (.md) to reStructuredText (.rst), [this tool](https://github.com/kgryte/markdown-to-restructuredtext) can be used.
 

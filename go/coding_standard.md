@@ -1,19 +1,36 @@
-# Tendermint Coding Standard
+# Go Coding Standard
+
+## Required Reading
+
+* https://golang.org/ref/spec
+* https://golang.org/ref/mem
+* https://golang.org/doc/effective_go.html
+
+You must become familiar with everything above, so go get a pound of coffee.
+
+## Coding Style
 
 In order to keep our code looking good with lots of programmers working on it, it helps to have a "coding standard", so all the code generally looks quite similar. This doesn't mean there is only one "right way" to write code, or even that this standard is better than your style.  But if we agree to a number of stylistic practices, it makes it much easier to read and modify new code.
 
 Please add items here, or modify them as appropriate. We have git versioning, don't be afraid of change.
 
- * Use `gofmt` (or `goimport`) to format all code upon saving it
+ * Use `gofmt` (or `goimport`) to format all code upon saving it.  Check out Vim-go.
  * Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
  * Think about documentation, and try to leave godoc comments, when it will help new developers.
- * Avoid the use of `TODO` / `BUG` / `FIXME` / `XXX` in code; these should instead be documented as specific issues that can be linked to in the code.
- * Avoid the use of panics and instead return an error. See [this issue](https://github.com/tendermint/coding/issues/23) for more information.
+ * `TODO` should not be used in lieu of correctness.  It can be used sparingly to document future direction.
+ * `BUG` / `FIXME` should be avoided; these should instead be documented as specific issues that can be linked to in the code.
+ * `XXX` can be used in work-in-progress (prefixed with "WIP:" on github) branches but they must be removed before approving a PR.
+ * Libraries *should* panic on developer usage error.
+ * Applications (e.g. clis/servers) *should* panic on unexpected unrecoverable errors and print a stack trace.
  
 ## Git
 
- * Production repos never push to `master` or `develop` branches
- * New features should be written in new branches and pull request opened to the `develop` branch
+ * Production repos never push to `master` or `develop` branches except the push-master.
+ * `develop` should always pass tests.
+ * Always start work with a "WIP: \*" (work-in-progress) pull-request, on a branch ideally named "feature/\*" or "hotfix/\*". You're encouraged to fork the repo and add it as a remote in .git/config (so you can push to your fork, but still use the same import paths to the original project).
+ * When complete, pull requests should be opened to the `develop` branch.
+ * Do not merge PRs that aren't final -- e.g. no code dead code or code that won't be used should be committed.
+ * Squash and merge to keep the history clean.
  * Merging from `develop` to `master` happens during a release.
  * All branches should be in lowercase, underscores are okay in branch names
  * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes
@@ -33,20 +50,20 @@ Every package should have a high level `doc.go` file to describe the purpose of 
 
 ## Various
 
- * Reserve "Save" and "Load" for long-running persistence operations. When parsing bytes, use "Read" or "Write".
- * Avoid single letter variable names, be more descriptive, and try to maintain consistency across the codebase. Note: this conflicts with https://talks.golang.org/2014/names.slide#7
- * Do not use "instance" in function names
+ * Reserve "Save" and "Load" for long-running persistence operations. When parsing bytes, use "Encode" or "Decode".
+ * Receiver variables should be at least 2 letters.  e.g. not `func (s \*Something) MyFunc(){}` but `func (sm *Something) MyFunc(){}`.  This makes refactoring easier when we rename Something to something else.
+ * Maintain consistency across the codebase.
+ * Do not use "instance" in function names. (JAE: what is this?)
  * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur:
 ``` golang
 type middleware struct {
 	middleware Middleware
 }
 ```
- * In comments, use "iff" to mean, "if and only if".  (It's not a typo)
+ * In comments, use "iff" to mean, "if and only if".
  * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
- * The first letter of sentences in comments are capitalized
- * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId"
- * Receiver variables should be at least 2 letters.  e.g. not `func (s \*Something) MyFunc(){}` but `func (sm *Something) MyFunc(){}`.  This makes refactoring easier when we rename Something to something else.
+ * The first letter of sentences in comments are capitalized and ends with a dot.
+ * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId".
 
 ## Importing Libraries
 
@@ -61,14 +78,14 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
    - tmcmd "github.com/tendermint/tendermint/cmd/tendermint/commands"
    - tmcfg "github.com/tendermint/tendermint/config/tendermint"
    - tmtypes "github.com/tendermint/tendermint/types"
- * Avoid using anonymous imports (the `.`), for example, `tmlibs/common` or anything else.
+ * Never use anonymous imports (the `.`), for example, `tmlibs/common` or anything else.
  * tip: Use the `_` library import to import a library for initialization effects (side effects)
 
 ## Dependencies
 
- * Use [glide](https://github.com/Masterminds/glide)
+ * Use [glide](https://github.com/tendermint/glide). (this is a fork of Masterminds/glide to fix a bug on `glide update`).
  * Never edit the glide.lock file, instead if you need to lock a dependancy to a certain git hash, the `version` can
- be set to the desired hash. For more information on advanced usage of the `glide.yaml` file see
+ be set to the desired hash in glide.yaml. For more information on advanced usage of the `glide.yaml` file see
 [this](https://glide.readthedocs.io/en/latest/glide.yaml/).
  * Dependencies should be pinned by a release tag, or specific commit, to avoid breaking `go get` when external dependencies are updated.
 
@@ -80,15 +97,13 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
    * Make use of table driven testing where possible and not-cumbersome
      - [Inspiration](https://dave.cheney.net/2013/06/09/writing-table-driven-tests-in-go)
    * Make use of [assert](https://godoc.org/github.com/stretchr/testify/assert) and [require](https://godoc.org/github.com/stretchr/testify/require)
-   * Use `package X_test` in the test file to ensure the code gets tested through the public API. See [this issue](https://github.com/tendermint/coding/issues/4) for background.
  * For Bash testing:
    * Checkout [shunit2](https://github.com/kward/shunit2) and [bats](https://github.com/sstephenson/bats)
    * In general, bash testing should be kept to a minimum.
 
 ## Errors
 
- * Make use of [pkg/errors](https://github.com/pkg/errors) for stack tracing if you have set a `--debug` option in your application
- * UP FOR DISCUSSION: To maximize code portability wherever possible check errors in place and return them, aka. do not hand off to another function for checking and exiting (for example `ExitOnErr(err error)`
+ * Avoid [pkg/errors](https://github.com/pkg/errors), it's a [broken system](https://github.com/pkg/errors/issues/144).
 
 ## Config
 
@@ -100,9 +115,6 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
  * When implementing a CLI use [Cobra](https://github.com/spf13/cobra) and [Viper](https://github.com/spf13/viper). urfave/cli can be replace with cobra in those repos where applicable.
  * Helper messages for commands and flags must be all lowercase.
- * Wherever possible return errors instead of exiting the application. This allows for the application optionally
- print a stack trace of the error if a `--debug` flag is used with your application, which is probably a good idea.
- * By default, do not print a full error stack trace for applications, but only print an error
  * Instead of using pointer flags (eg. `FlagSet().StringVar`) use viper to retrieve flag values (eg. `viper.GetString`)
    - The flag key used when setting and getting the flag should always be stored in a
    variable taking the form `FlagXxx` or `flagXxx`.
