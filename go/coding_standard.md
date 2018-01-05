@@ -14,7 +14,7 @@ In order to keep our code looking good with lots of programmers working on it, i
 
 Please add items here, or modify them as appropriate. We have git versioning, don't be afraid of change.
 
- * Use `gofmt` (or `goimport`) to format all code upon saving it.  Check out Vim-go.
+ * Use `gofmt` (or `goimport`) to format all code upon saving it.  (If you use VIM, maybe check out Vim-go).
  * Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
  * Think about documentation, and try to leave godoc comments, when it will help new developers.
  * `TODO` should not be used in lieu of correctness.  It can be used sparingly to document future direction.
