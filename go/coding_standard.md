@@ -64,6 +64,7 @@ type middleware struct {
  * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
  * The first letter of sentences in comments are capitalized and ends with a dot.
  * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId".
+ * Prefer errors.New() instead of fmt.Errorf() unless you're actually using the format feature with arguments. (otherwise it's needlessly inefficient, & it'll crap out on %*)
 
 ## Importing Libraries
 
