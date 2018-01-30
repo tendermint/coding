@@ -7,7 +7,6 @@
   * **question**
   * **task**
   * **policy** - process or policy issues
-  * **milestone** - an issue describing the milestone
 
 ## Highlight (color #e6fad2)
   * **feature** - something worth featuring in publications
