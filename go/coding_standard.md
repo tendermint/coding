@@ -14,14 +14,22 @@ In order to keep our code looking good with lots of programmers working on it, i
 
 Please add items here, or modify them as appropriate. We have git versioning, don't be afraid of change.
 
- * Use `gofmt` (or `goimport`) to format all code upon saving it.  (If you use VIM, maybe check out Vim-go).
- * Use a linter (see below) and generally try to keep the linter happy (where it makes sense)
+### General
+
+ * Use `gofmt` (or `goimport`) to format all code upon saving it.  (If you use VIM, check out vim-go).
+ * Use a linter (see below) and generally try to keep the linter happy (where it makes sense).
  * Think about documentation, and try to leave godoc comments, when it will help new developers.
  * `TODO` should not be used in lieu of correctness.  It can be used sparingly to document future direction.
  * `BUG` / `FIXME` should be avoided; these should instead be documented as specific issues that can be linked to in the code.
  * `XXX` can be used in work-in-progress (prefixed with "WIP:" on github) branches but they must be removed before approving a PR.
  * Libraries *should* panic on developer usage error.
  * Applications (e.g. clis/servers) *should* panic on unexpected unrecoverable errors and print a stack trace.
+
+### Comments
+
+ * Use a space after comment deliminter (ex. `// your comment`).
+ * Many comments are not sentences, these should begin with a lower case letter and end without a period.
+ * The first letter of sentences in comments are capitalized and ends with a period.
  
 ## Git
 
@@ -42,7 +50,8 @@ These must be applied to all (go) repos.
 
  * [shellcheck](https://github.com/koalaman/shellcheck)
  * [gometalinter (covers all important linters)](https://github.com/alecthomas/gometalinter)
-   - see the `Makefile` in each repo for ongoing linting progress. Running `make metalinter` is the ultimate goal, while `make metalinter_test` enables all the linters that are currently passing, for integration with CI.
+   - See the `Makefile` in each repo for ongoing linting progress. Running `make metalinter` is the ultimate goal, while `make metalinter_test` enables all the linters that are currently passing, for integration with CI.
+   * gometalinter may make use of the [Tendermint fork of golint](https://github.com/tendermint/lint/)
 
 ## Documentation
 
@@ -62,7 +71,6 @@ type middleware struct {
 ```
  * In comments, use "iff" to mean, "if and only if".
  * Product names are capitalized, like "Tendermint", "Basecoin", "Protobuf", etc except in command lines: `tendermint --help`
- * The first letter of sentences in comments are capitalized and ends with a dot.
  * Acronyms are all capitalized, like "RPC", "gRPC", "API".  "MyID", rather than "MyId".
  * Prefer errors.New() instead of fmt.Errorf() unless you're actually using the format feature with arguments. (otherwise it's needlessly inefficient, & it'll crap out on %*)
 
