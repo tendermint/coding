@@ -33,6 +33,9 @@ Please add items here, or modify them as appropriate. We have git versioning, do
  
 ## Github
 
+Developement should following the regimented strucutre for branches and pull requests outlined herein. 
+For further inspiration checkout https://nvie.com/posts/a-successful-git-branching-model/.
+
  * Production branches
    * Production repos never push to `master` or `develop` branches except the push-master.
    * `develop` should always pass tests.
