@@ -92,10 +92,10 @@ Sometimes it's necessary to rename libraries to avoid naming collisions or ambig
 
 ## Dependencies
 
- * Use [glide](https://github.com/tendermint/glide). (this is a fork of Masterminds/glide to fix a bug on `glide update`).
- * Never edit the glide.lock file, instead if you need to lock a dependancy to a certain git hash, the `version` can
- be set to the desired hash in glide.yaml. For more information on advanced usage of the `glide.yaml` file see
-[this](https://glide.readthedocs.io/en/latest/glide.yaml/).
+ * Use [dep](https://github.com/golang/dep). 
+ * Never edit the Gopkg.lock file, instead if you need to lock a dependancy to a certain git hash, the `version` can
+ be set to the desired hash in Gopkg.toml. For more information on advanced usage of the `Gopkg.toml` file see
+[this](https://golang.github.io/dep/docs/daily-dep.html).
  * Dependencies should be pinned by a release tag, or specific commit, to avoid breaking `go get` when external dependencies are updated.
 
 ## Testing
