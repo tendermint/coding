@@ -31,18 +31,29 @@ Please add items here, or modify them as appropriate. We have git versioning, do
  * Many comments are not sentences, these should begin with a lower case letter and end without a period.
  * The first letter of sentences in comments are capitalized and ends with a period.
  
-## Git
+## Github
 
- * Production repos never push to `master` or `develop` branches except the push-master.
- * `develop` should always pass tests.
- * Always start work with a "WIP: \*" (work-in-progress) pull-request, on a branch ideally named "feature/\*" or "hotfix/\*". You're encouraged to fork the repo and add it as a remote in .git/config (so you can push to your fork, but still use the same import paths to the original project).
- * When complete, pull requests should be opened to the `develop` branch.
- * Do not merge PRs that aren't final -- e.g. no code dead code or code that won't be used should be committed.
- * Squash and merge to keep the history clean.
- * Merging from `develop` to `master` happens during a release.
- * All branches should be in lowercase, underscores are okay in branch names
- * All pull requests should include any relevant additions to the `CHANGELOG.md`, If PR is to the develop branch changes
- can be included under an `unreleased changes` header at the top of the document.
+ * Production branches
+   * Production repos never push to `master` or `develop` branches except the push-master.
+   * `develop` should always pass tests.
+   * `develop` branch should have an on going open PR to `master`, high level comments can be made here
+   * Merging from `develop` to `master` happens during a release.
+ * Feature branches
+   * should following the naming convention `yourname/branch-description`
+   * all branches should be in lowercase, underscores/dashes are okay in branch names
+   * should have an open PR with the name "WIP: your feature description"
+   * All feature PRs should opened to merge to the `develop` branch, unless stacked on other PR leading to `develop`.
+    * Ideally, for faster merges, break your PR into several PRs that stack on top of each other and lead to `develop`.
+ * Reference branches
+   * Sometimes is is necessary to keep a branch with reference information even there there is no intention of merging 
+   * These branches should be named `yourname/ref/branch-description`
+ * Pull Requests (PRs)
+   * Do not merge PRs that aren't final -- e.g. no code dead code or code that won't be used should be committed.
+   * Always delete branch immediately after merge
+   * [Squash](https://stackoverflow.com/questions/5189560/squash-my-last-x-commits-together-using-git) 
+   commits to keep the history clean.
+   * All pull requests should include any relevant additions to the `CHANGELOG.md`, 
+   If PR is to the develop branch changes can be included under an `unreleased changes` header at the top of the document.
 
 ## Linters
 
