@@ -42,14 +42,14 @@ For further inspiration checkout https://nvie.com/posts/a-successful-git-branchi
    * A release is a successful PR from the `develop` to `master`. The contents
      from the PRs merged into develop forms the as basis for the release
  * Feature branches
-   * should follow the naming convention `yourname/ghi-branch-description`, where `ghi` is the github issue number
+   * should follow the naming convention `yourname/ghi-description`, where `ghi` is the github issue number
    * all branches should be in lowercase, underscores/dashes are okay in branch names
    * should have an open PR with the name "WIP: your feature description"
    * All feature PRs should be opened for merge to the `develop` branch, unless stacked on other PR leading to `develop`.
     * Ideally, for faster merges, break your PR into several PRs that stack on top of each other and lead to `develop`.
  * Reference branches
    * Sometimes it is necessary to keep a branch with reference information even there there is no intention of merging 
-   * These branches should be named `yourname/reference/branch-description`
+   * These branches should be named `yourname/reference-ghi-description`, where `ghi` is the github issue number
  * Pull Requests (PRs)
    * Do not merge PRs that aren't final -- e.g. no code dead code or code that won't be used should be committed.
    * Always delete branch immediately after merge
