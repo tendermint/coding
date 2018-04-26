@@ -77,6 +77,7 @@ Every package should have a high level `doc.go` file to describe the purpose of 
  * Receiver variables should be at least 2 letters.  e.g. not `func (s \*Something) MyFunc(){}` but `func (sm *Something) MyFunc(){}`.  This makes refactoring easier when we rename Something to something else.
  * Maintain consistency across the codebase.
  * Do not use "instance" in function names. (JAE: what is this?)
+ * Functions that return functions should have the suffix `Fn` 
  * A struct generally shouldn’t have a field named after itself, aka. this shouldn't occur:
 ``` golang
 type middleware struct {
