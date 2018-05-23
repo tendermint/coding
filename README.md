@@ -62,6 +62,12 @@ Branch pr/999 set up to track remote branch pr/999 from origin.
 Switched to a new branch 'pr/999'
 ```
 
+## Bash Scripts
+
+Use 'strict mode':
+
+- http://redsymbol.net/articles/unofficial-bash-strict-mode/
+
 ## Documentation
 
 We use [Read The Docs](https://readthedocs.org/) to host - with [Sphinx](http://www.sphinx-doc.org/en/stable/) to build - our documentation. We currently have three docs streams:
