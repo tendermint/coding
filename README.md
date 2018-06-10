@@ -64,7 +64,13 @@ Switched to a new branch 'pr/999'
 
 ## Merging a PR:
 
-Each repository will have its own reviewers and CI requirements. Small PRs should be squashed then merged with a single "Merge pull request #XYZ: [title]" commit. Larger PRs can include multiple commits, but should squash related commits for brevity, prefix each commit with the PR number, and include the same single last merge commit with the PR title.
+Each repository will have its own reviewers and CI requirements. Small PRs should be squashed then merged with a single "Merge pull request #XYZ: [title]" commit. Larger PRs can include multiple commits, but should squash related commits for brevity, prefix each commit with the PR number, and include the same single last merge commit with the PR title. Squashing commits of a PR can be achieved using the command:
+
+```
+git squash -i YOURHASH^ 
+```
+
+where `YOURHASH` is oldest commit hash of your PR. 
 
 ## Bash Scripts
 
