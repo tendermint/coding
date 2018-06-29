@@ -80,19 +80,9 @@ Use 'strict mode':
 
 ## Documentation
 
-We use [Read The Docs](https://readthedocs.org/) to host - with [Sphinx](http://www.sphinx-doc.org/en/stable/) to build - our documentation. We currently have three docs streams:
+The majority of relevant documentation is hosted at:
 
-* [Tendermint](https://tendermint.readthedocs.io)
-* [Ethermint](https://ethermint.readthedocs.io)
-* [Cosmos-SDK](https://cosmos-sdk.readthedocs.io)
+- https://tendermint.com/docs/ and,
+- https://cosmos.network/docs/
 
-Each is built from the `docs/` directory of their respective respositories. To build the docs locally, from the `docs/` directory, run `make html` and open `_build/html/index.html` in your browser.
-
-To convert documentation in markdown (.md) to reStructuredText (.rst), [this tool](https://github.com/kgryte/markdown-to-restructuredtext) can be used.
-
-Hyperlinks within the docs require that the `.rst` file type be changed to `.html` where applicable. For example:
-`<./app-development.html>` refers to `app-development.rst` as written and checked-in to the repo. The build process converts `.rst` files to `.html`, hence this requirement.
-
-Some docs are found in other repositories and get pulled in via the `conf.py` file. See [here](https://github.com/tendermint/tendermint/blob/88f5f21dbbf55589680d5e832647f5869f4fda1a/docs/conf.py#L174-L197) for an example.
-
-NOTE: the docs on Read The Docs must be triggered manually (from the RTD dashboard) after a release or any update to the code.
+which is produced from the docs directory in [Tendermint Core](https://github.com/tendermint/tendermint/tree/master/docs) and [Cosmos SDK](https://github.com/cosmos/cosmos-sdk/tree/master/docs), respectively. The `docs/README.md` in each of these repositories produces the landing page while the Table of Contents is generated from a configuration file found [here (Tendermint)](https://github.com/tendermint/tendermint.com/blob/develop/docs/.vuepress/config.js) and [here (SDK)](https://github.com/cosmos/cosmos.network/blob/develop/docs/.vuepress/config.js). Contact a member of the SRE team if you do not have access but require updating the ToC.
