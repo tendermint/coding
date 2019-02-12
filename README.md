@@ -1,3 +1,5 @@
+**Notice:** This repo has largely been left by the wayside and while it still has plenty of useful information, some of it should be considered out of date. We welcome any contributions aimed at improving the organization and content of this repo.
+
 Welcome to the coding resources repository for Tendermint. This README is intended as a guide for both for external contributors and new hires. The `CONTRIBUTING.md` of every repo should link to this repo. The files in this repo are an amalgamation from various places and any help consolidating/organizing them will be greatly appreciated.
 
 Most production repositories should have:
